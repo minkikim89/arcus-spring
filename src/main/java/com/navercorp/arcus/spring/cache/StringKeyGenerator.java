@@ -37,6 +37,7 @@ public class StringKeyGenerator implements KeyGenerator {
   public Object generate(Object target, Method method, Object... params) {
     int paramHash = 0;
     int hash = 0;
+    String keyString;
     StringBuilder keyBuilder = new StringBuilder();
     for (int i = 0, n = params.length; i < n; i++) {
       if (i > 0) {
@@ -48,6 +49,8 @@ public class StringKeyGenerator implements KeyGenerator {
         hash ^= paramHash;
       }
     }
-    return new ArcusStringKey(keyBuilder.toString(), hash);
+
+    keyString = keyBuilder.toString().replace(' ', '_') + String.valueOf(hash);
+    return new ArcusStringKey(keyString);
   }
 }
