@@ -41,8 +41,7 @@ public class StringKeyGeneratorTest {
     ArcusStringKey arcusKey1 = (ArcusStringKey) keyGenerator.generate(null, null, "a,b", "c", "de");
     ArcusStringKey arcusKey2 = (ArcusStringKey) keyGenerator.generate(null, null, "a,b", "c,de");
 
-    assertEquals(arcusKey1.getStringKey(), arcusKey2.getStringKey());
-    assertTrue(arcusKey1.getHash() != arcusKey2.getHash());
+    assertNotEquals(arcusKey1.getStringKey(), arcusKey2.getStringKey());
   }
 
 }
